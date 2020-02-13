@@ -58,7 +58,7 @@ class ComboGANModel(BaseModel):
         # load/define networks
         self.netG = networks.define_G(opt.input_nc, opt.output_nc, opt.ngf,
                                       opt.netG_n_blocks, opt.netG_n_shared,
-                                      self.n_domains, opt.norm, opt.use_dropout, self.gpu_ids, classes, opt.divide_dims, opt.oldmodel)
+                                      self.n_domains, opt.norm, opt.use_dropout, self.gpu_ids, classes, opt.divide_dims)
         # False if datasets include NaN
         self.nanflag = True
 
@@ -89,7 +89,7 @@ class ComboGANModel(BaseModel):
             self.criterionIdt = self.L1
             #self.criterionLatent = lambda y,t : torch.mean(1 - self.cosinedistance(y, t.detach()))
             self.criterionLatent = lambda y,t : self.L1(y,t.detach())
-            self.criterionGAN = networks.GANLoss(use_lsgan=not opt.no_lsgan, tensor=self.Tensor,flatloss=opt.flatloss)
+            self.criterionGAN = networks.GANLoss(use_lsgan=not opt.no_lsgan, tensor=self.Tensor)
             # initialize optimizers
             self.netG.init_optimizers(torch.optim.Adam, opt.lr, (opt.beta1, 0.999))
             self.netD.init_optimizers(torch.optim.Adam, opt.lr, (opt.beta1, 0.999))
@@ -160,12 +160,9 @@ class ComboGANModel(BaseModel):
             #d is another domain
             d = 1 - dom
             encoded = self.netG.encode(self.real_A, dom)[0]
-            if self.opt.oldmodel:
-                fake = self.netG.decode(encoded,d)
-                rec = self.netG.decode(self.netG.encode(fake,d)[0],dom)
-            else:
-                rec = self.netG.decode(self.del_fea(encoded,dom,True))
-                fake = self.netG.decode(self.del_fea(encoded,d,True))
+
+            rec = self.netG.decode(self.del_fea(encoded,dom,True))
+            fake = self.netG.decode(self.del_fea(encoded,d,True))
 
             if self.start_pose_epoch == 0:
                 label = self.netG.labeldecode(encoded[:,:self.opt.divide_dims], 0)[0]

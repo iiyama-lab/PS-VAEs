@@ -27,7 +27,7 @@ def get_norm_layer(norm_type='instance'):
         raise NotImplementedError('normalization layer [%s] is not found' % norm_type)
 
 
-def define_G(input_nc, output_nc, ngf, n_blocks, n_blocks_shared, n_domains, norm='batch', use_dropout=False, gpu_ids=[], out_classes = 32, divide_dims=192,oldmodel=False):
+def define_G(input_nc, output_nc, ngf, n_blocks, n_blocks_shared, n_domains, norm='batch', use_dropout=False, gpu_ids=[], out_classes = 32, divide_dims=192,oldmodel=Fals):
     norm_layer = get_norm_layer(norm_type=norm)
     if type(norm_layer) == functools.partial:
         use_bias = norm_layer.func == nn.InstanceNorm2d
