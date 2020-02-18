@@ -32,8 +32,7 @@ class ComboGANModel(BaseModel):
             classes = 18
         if opt.est_mnist:
             classes = 10
-        if opt.est_mult:
-            classes = 50
+
         self.start_pose_epoch = opt.start_pose_epoch
         self.real_A = self.Tensor(opt.batchSize, opt.input_nc, opt.fineSize, opt.fineSize)
         self.real_B = self.Tensor(opt.batchSize, opt.output_nc, opt.fineSize, opt.fineSize)
@@ -135,8 +134,6 @@ class ComboGANModel(BaseModel):
             input_B = input['B'][:,:self.opt.output_nc]
             if self.opt.est_joint:
                 gt_B = input['B'][:,-2]
-            elif self.opt.est_mult:
-                gt_B = input['B'][:,-2:]
             else:
                 gt_B = input['B'][:,-1]
             #gt_B.size = (B, (2), 256,128)

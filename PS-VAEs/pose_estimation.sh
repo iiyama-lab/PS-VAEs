@@ -3,6 +3,6 @@ source=syn
 target=rea
 name=pose_estimation
 
-python train.py --name ${name} --source ${souece} --target ${target} --gpu_ids ${gpu} --est_mnist
+python train.py --name ${name} --source ${souece} --target ${target} --gpu_ids ${gpu} --est_mnist --batchSize 12
 
 python test.py --name ${name} --source ${souece} --target ${target} --gpu_ids ${gpu} --est_mnist --which_epoch 200
