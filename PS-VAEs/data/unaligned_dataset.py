@@ -20,15 +20,16 @@ class UnalignedDataset(BaseDataset):
         root = opt.dataroot + '/' + opt.phase
         if opt.est_mnist and val:
             target = target.replace('_imb','')
-            target = re.sub(r'_[0-9]+^','',target)
+            target = re.sub(r'_[0-9]+','',target)
+            root = root.replace('train','test')
         elif opt.est_mnist and not opt.isTrain:
             target = target.replace('_imb','')
-            target = re.sub(r'_[0-9]+^','',target)
+            target = re.sub(r'_[0-9]+','',target)
         elif val:
             root = root.replace('train','test')
-
+        
         self.dirs = [os.path.join(root +'_'+ target), os.path.join(opt.dataroot, opt.phase +'_'+ source)]
-
+	
         self.paths = [sorted(make_dataset(d,40000,opt.isTrain)) for d in self.dirs]
         self.sizes = [len(p) for p in self.paths]
 
