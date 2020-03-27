@@ -42,6 +42,6 @@ for i, data in enumerate(dataset):
                 save_path = os.path.join(web_dir, 'mat_%d.png' % (i//opt.n_domains))
                 visualizer.save_image_matrix(vis_buffer, save_path)
                 vis_buffer.clear()
-print("accuracy:" model.get_digit_accuracy())
+print("accuracy:", model.get_digit_accuracy())
 
 webpage.save()

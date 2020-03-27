@@ -12,7 +12,7 @@ class BaseOptions():
         self.parser.add_argument('--name', type=str, default='mnist2usps', help='name of the experiment. It decides where to store samples and models')
         self.parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
 
-        self.parser.add_argument('--dataroot', type=str, default='/datasets', help='path to images (should have subfolders trainA, trainB, valA, valB, etc)')
+        self.parser.add_argument('--dataroot', type=str, default='./datasets', help='path to images (should have subfolders trainA, trainB, valA, valB, etc)')
         self.parser.add_argument('--n_domains', type=int, default=2, help='Number of domains to transfer among')
 
         self.parser.add_argument('--max_dataset_size', type=int, default=float("inf"), help='Maximum number of samples allowed per dataset. If the dataset directory contains more than max_dataset_size, only a subset is loaded.')
