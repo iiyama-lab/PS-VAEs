@@ -1,6 +1,7 @@
 # Partially-Shared Variational Auto Encoders
 This is the implementation of Partially-Shared Variational Auto Encoders (PS-VAEs) for pose estimation and digits classification in Pytorch.
 The code is written by Ryuhei Takahashi and Atsushi Hashimoto. The work was accepted by ECCV 2020 Poster.
+
 <img src="docs/performance.png" alt="Pose Estimation Examples" width="50%"/>
 
 # What is Target Shift? What is the problem
