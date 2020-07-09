@@ -16,3 +16,6 @@ The code is written by Ryuhei Takahashi and Atsushi Hashimoto. The work was acce
   year={2020}
 }
 ```
+
+# License
+The code in this repository is published under [the MIT License](LICENSE).
