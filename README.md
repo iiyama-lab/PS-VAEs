@@ -37,6 +37,11 @@ Partially-shared Encoder and Decoder for label preserving domain conversion.
 Note that X% represents the strength of the target shift (larger is stronger). 
 <img src="docs/quantitative_results_digits.png" alt="Quantitative Evaluation with digit UDA tasks." width="70%" />
 
+# Get Started
+TBA.
+
+# Dataset
+- [The synthesized pose dataset](https://drive.google.com/file/d/1Qg_LWbkQVNLCng94e_EkbQ8SyT55BMmH/view?usp=sharing), which is the source domain dataset of the pose estimation task.
 # Paper and Citation
 - [The paper on arXiv](https://arxiv.org/abs/2001.07895)
 - Citation Info (If you use this code for your research, please cite our papers).
@@ -48,8 +53,6 @@ Note that X% represents the strength of the target shift (larger is stronger).
   year={2020}
 }
 ```
-# Get Started
-TBA.
 
 # License
 The code in this repository is published under [the MIT License](LICENSE).
